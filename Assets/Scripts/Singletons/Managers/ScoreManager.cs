@@ -48,7 +48,7 @@ public class ScoreManager : Singleton<ScoreManager>
 
         float startTime = Time.realtimeSinceStartup;
 
-        StartCoroutine(CountScoreRoutine());
+        CountScoreRoutine();
        
         float endTime = Time.realtimeSinceStartup;
         float finalTime = (endTime - startTime);
@@ -67,23 +67,25 @@ public class ScoreManager : Singleton<ScoreManager>
     }
     }
 
+    //Now shows directly the final result
     ///<summary> Increments score gradually</summary>
-    IEnumerator CountScoreRoutine()
+    public void CountScoreRoutine()
 	{
 		int iterations = 0;
         int counterValue = GetScoreText();
 
-        while (counterValue < CurrentScore && iterations < 100000)
-        {
-            counterValue += _increment;
-            UpdateScoreText(counterValue);
-            iterations++;
-            yield return null;
-        }
+ 
+        //while (counterValue < CurrentScore && iterations < 100000)
+        //{
+        //    counterValue += _increment;
+        //    UpdateScoreText(counterValue);
+        //    iterations++;
+        //    yield return null;
+        //}
 
         counterValue = CurrentScore;
 		UpdateScoreText (CurrentScore);
-//      yield return null;
+      //yield return null;
 
     }
 }
